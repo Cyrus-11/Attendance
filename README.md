@@ -27,12 +27,12 @@ The Attendance Logging App is a simple Node.js and Express.js application for lo
 4. **Run the Application**:
    npm start
 5. **API Endpoints**:
-    `POST /attendance`: Add an attendance record.
-    `GET /attendance`: Get all attendance records.
-    `GET /attendance/search?name=John`: Search attendance records by name.
-    `GET /attendance?sortBy=name`: Sort records by name.
-    `GET /attendance?sortBy=time`: Sort records by time.
-    `GET /attendance?filterByClass=Math101`: Filter records by class.
+   -`POST /attendance`: Add an attendance record.
+   -`GET /attendance`: Get all attendance records.
+   - `GET /attendance/search?name=John`: Search attendance records by name.
+   -`GET /attendance?sortBy=name`: Sort records by name.
+   - `GET /attendance?sortBy=time`: Sort records by time.
+   -`GET /attendance?filterByClass=Math101`: Filter records by class.
 
 
 
