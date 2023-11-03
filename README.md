@@ -34,6 +34,32 @@ The Attendance Logging App is a simple Node.js and Express.js application for lo
    - `GET /attendance?sortBy=time`: Sort records by time.
    - `GET /attendance?filterByClass=Math101`: Filter records by class.
 
+## Usage
+6.**Adding Records**:
+To add a new attendance record, make a POST request to /attendance with the following JSON data:
+
+{
+  "name": "John Doe",
+  "course": "Math101",
+  "matric_number": "12345678"
+}
+
+7.**Searching Records**:
+To search for attendance records by name, make a GET request to /attendance?name=John.
+
+8.**Sorting Records**:
+To sort records by name, make a GET request to /attendance?sortBy=name.
+To sort records by time, make a GET request to /attendance?sortBy=time.
+
+9.**Filtering Records**:
+
+To filter records by class, make a GET request to /attendance?filterByClass=Math101.
+
+## Error Handling
+The application handles various errors and provides appropriate error messages for missing input, database errors, and record not found situations.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 
 
