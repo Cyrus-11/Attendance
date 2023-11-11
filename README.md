@@ -32,7 +32,7 @@ The Attendance Logging App is a simple Node.js and Express.js application for lo
    - `GET /attendance/search?name=John`: Search attendance records by name.
    - `GET /attendance?sortBy=name`: Sort records by name.
    - `GET /attendance?sortBy=time`: Sort records by time.
-   - `GET /attendance?filterByClass=Math101`: Filter records by class.
+   - `GET /attendance?filterByCourse=Math101`: Filter records by class.
 
 ## Usage
 6.**Adding Records**:

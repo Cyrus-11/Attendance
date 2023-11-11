@@ -4,7 +4,7 @@ const checkMatricNumberExists = "SELECT s FROM attendance s WHERE s.matric_numbe
 const addAttendance = "INSERT INTO attendance (name, course, matric_number, time) VALUES ($1, $2, $3, $4)";
 const getAttendanceSortedByName = "SELECT * FROM attendance ORDER BY name";
 const getAttendanceSortedByTime = "SELECT * FROM attendance ORDER BY time";
-const getAttendanceFilteredByClass = "SELECT * FROM attendance WHERE course = $1";
+const getAttendanceFilteredByCourse =`SELECT * FROM attendance WHERE LOWER(course) = LOWER($1)`;
 
 
 
@@ -16,5 +16,5 @@ module.exports = {
     addAttendance,
     getAttendanceSortedByName,
     getAttendanceSortedByTime,
-    getAttendanceFilteredByClass 
+    getAttendanceFilteredByCourse 
 };

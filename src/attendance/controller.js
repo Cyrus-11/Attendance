@@ -1,31 +1,34 @@
 const pool = require('../../db');
 const queries = require('./queries');
-
 const getAttendance = (req, res) => {
-    const { sortBy, filterByClass } = req.query;
-  
-    let query;
-    if (sortBy === "name") {
+  const { sortBy, filterByCourse } = req.query;
+
+  // Convert to lowercase for case-insensitive comparison
+  const lowerCaseSortBy = sortBy ? sortBy.toLowerCase() : sortBy;
+  const lowerCaseFilterByCourse = filterByCourse ? filterByCourse.toLowerCase() : filterByCourse;
+  let query;
+  let values = [];
+
+  if (lowerCaseSortBy === "name") {
       query = queries.getAttendanceSortedByName;
-    } else if (sortBy === "time") {
+  } else if (lowerCaseSortBy === "time") {
       query = queries.getAttendanceSortedByTime;
-    } else if (filterByClass) {
-      query = queries.getAttendanceFilteredByClass;
-    } else {
+  } else if (lowerCaseFilterByCourse) {
+      query = queries.getAttendanceFilteredByCourse;
+      values = [lowerCaseFilterByCourse];
+  } else {
       query = queries.getAttendance; // Default query
-    }
-  
-    const values = filterByClass ? [filterByClass] : [];
-  
-    pool.query(query, values, (error, results) => {
+  }
+
+  pool.query(query, values, (error, results) => {
       if (error) {
-        console.error(error);
-        return res.status(500).json({ error: 'An error occurred while fetching attendance records.' });
+          console.error(error);
+          return res.status(500).json({ error: 'An error occurred while fetching attendance records.' });
       }
       res.status(200).json({ success: true, message: 'Attendance records fetched successfully', data: results.rows });
-    });
-  };
-  
+  });
+};
+
 
 const getAttendanceByName = (req, res) => {
   const name = req.query.name;
