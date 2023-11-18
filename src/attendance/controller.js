@@ -58,7 +58,7 @@ const addAttendance = async (req, res) => {
       return res.status(400).json({ error: 'Missing or invalid input. Please provide name, course, and matric_number.' });
     }
     //Check if name contains only letters
-    if(!/^[A-Za-z]+$/.test(name)){
+    if(!/^[A-Za-z\s]+$/.test(name)){
         return res.status(400).json({success:false, error:'Name should only contain letters.'});
     }
     // Check if matric_number exists
